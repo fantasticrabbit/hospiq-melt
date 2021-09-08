@@ -21,7 +21,7 @@ plugins:
     variant: adswerve
     pip_url: git+https://github.com/adswerve/target-bigquery.git@v0.10.2
     config:
-      credentials_path: /Users/tom/.google/noble-return-324620-178f72e8500d.json
+      credentials_path: $GSUITECREDS
       project_id: noble-return-324620
       dataset_id: hospiq
       location: US
