@@ -1,0 +1,27 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: 8bdef300-db9b-4f55-98ff-b91a425cdcfb
+plugins:
+  extractors:
+  - name: tap-csv
+    variant: meltano
+    pip_url: git+https://gitlab.com/meltano/tap-csv.git
+    config:
+      files:
+      - entity: visits
+        file: extract/visits.csv
+        keys:
+        - visitkey
+      - entity: surgeries
+        file: extract/surgeries.csv
+        keys:
+        - surgerykey
+  loaders:
+  - name: target-bigquery
+    variant: adswerve
+    pip_url: git+https://github.com/adswerve/target-bigquery.git@v0.10.2
+    config:
+      credentials_path: /Users/tom/.google/noble-return-324620-178f72e8500d.json
+      project_id: noble-return-324620
+      dataset_id: hospiq
+      location: US
