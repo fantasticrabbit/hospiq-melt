@@ -1,4 +1,4 @@
-name: hospiq-melt
+name: hospiqmelt
 version: '1.0'
 profile: meltano
 config-version: 2
@@ -22,5 +22,5 @@ clean-targets:
 - dbt_modules
 - logs
 models:
-  hospiq-melt:
+  hospiqmelt:
     materialized: view
