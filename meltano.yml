@@ -25,6 +25,9 @@ plugins:
       project_id: noble-return-324620
       dataset_id: hospiq
       location: US
+  orchestrators:
+  - name: airflow
+    pip_url: apache-airflow==2.1.2 --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.1.2/constraints-${MELTANO__PYTHON_VERSION}.txt
   transformers:
   - name: dbt
     pip_url: dbt==0.20.2
@@ -34,3 +37,12 @@ plugins:
   files:
   - name: dbt
     pip_url: git+https://gitlab.com/meltano/files-dbt.git@config-version-2
+  - name: airflow
+    pip_url: git+https://gitlab.com/meltano/files-airflow.git
+schedules:
+- name: csv-google
+  extractor: tap-csv
+  loader: target-bigquery
+  transform: run
+  interval: '@daily'
+  start_date: 2021-09-08 23:52:56.687741
