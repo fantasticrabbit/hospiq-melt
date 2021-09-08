@@ -1,4 +1,4 @@
-name: my_meltano_project
+name: hospiq-melt
 version: '1.0'
 profile: meltano
 config-version: 2
@@ -22,9 +22,5 @@ clean-targets:
 - dbt_modules
 - logs
 models:
-  my_meltano_project: null
-  tap_gitlab: {}
-vars:
-  tap_gitlab:
-    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
-    ultimate_license: '{{ env_var(''GITLAB_API_ULTIMATE_LICENSE'', False) }}'
+  hospiq-melt:
+    materialized: view
