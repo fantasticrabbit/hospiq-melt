@@ -29,7 +29,8 @@ plugins:
   - name: dbt
     pip_url: dbt==0.20.2
     config:
-      target_schema: patienttypes
+      target_schema: analytics
+      models: observation inpatient outpatient
   files:
   - name: dbt
     pip_url: git+https://gitlab.com/meltano/files-dbt.git@config-version-2
