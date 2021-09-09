@@ -10,6 +10,7 @@
 ### ToDo:
 
 1. troubleshoot tap-csv not capturing state correctly.
-1. see if tap-spreadsheets-anywhere provides better csv import than tap-csv (field types)
-1. test run alternate destination to postgres on separate schedule
+1. ~~see if tap-spreadsheets-anywhere provides better csv import than tap-csv (field types)~~
+1. ~~test run alternate destination to postgres on separate schedule~~
 1. troubleshoot airflow dags, seems to be failing.
+1. provide schema prefixes to dbt, otherwise need to specify in .sql models

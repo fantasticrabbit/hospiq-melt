@@ -16,6 +16,24 @@ plugins:
         file: extract/surgeries.csv
         keys:
         - surgerykey
+  - name: tap-spreadsheets-anywhere
+    pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+    config:
+      tables:
+      - path: file://extract/
+        name: visits
+        pattern: visits*.csv
+        start_date: '2017-05-01T00:00:00Z'
+        key_properties:
+        - visitkey
+        format: csv
+      - path: file://extract/
+        name: surgeries
+        pattern: surgeries*.csv
+        start_date: '2017-05-01T00:00:00Z'
+        key_properties:
+        - surgerykey
+        format: csv
   loaders:
   - name: target-bigquery
     variant: adswerve
@@ -25,6 +43,14 @@ plugins:
       project_id: noble-return-324620
       dataset_id: hospiq
       location: US
+  - name: target-postgres
+    variant: transferwise
+    pip_url: pipelinewise-target-postgres
+    config:
+      host: localhost
+      port: 5432
+      user: tom
+      dbname: hospiq
   orchestrators:
   - name: airflow
     pip_url: apache-airflow==2.1.2 --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.1.2/constraints-${MELTANO__PYTHON_VERSION}.txt
