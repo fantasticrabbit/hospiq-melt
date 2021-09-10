@@ -51,6 +51,7 @@ plugins:
       port: 5432
       user: tom
       dbname: hospiq
+      schema: hospiq
   orchestrators:
   - name: airflow
     pip_url: apache-airflow==2.1.2 --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.1.2/constraints-${MELTANO__PYTHON_VERSION}.txt
@@ -71,4 +72,10 @@ schedules:
   loader: target-bigquery
   transform: run
   interval: '@daily'
+  start_date: 2021-09-08 23:52:56.687741
+- name: csv-postgres
+  extractor: tap-spreadsheets-anywhere
+  loader: target-postgres
+  transform: run
+  interval: '*/5 * * * *'
   start_date: 2021-09-08 23:52:56.687741
